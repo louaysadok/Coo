@@ -8,3 +8,12 @@ backups/
 *.db
 *.db-wal
 *.db-shm
+
+# Flutter / Android build output
+mobile/build/
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/.idea/
