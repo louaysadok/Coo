@@ -1,0 +1,29 @@
+{
+  "result_count": 1,
+  "page_count": 1,
+  "page_size": 20,
+  "page": 1,
+  "results": [
+    {
+      "id": "3f3f3f3f-3f3f-43f3-83f3-3f3f3f3f3f3f",
+      "title": "Malformed URL torture test",
+      "url": "https:///cdn.example.org/one/two/three.jpg",
+      "thumbnail": "//api.openverse.org/v1/images/3f3f3f3f-3f3f-43f3-83f3-3f3f3f3f3f3f/thumb/",
+      "creator_url": "cdn.example.org/people/1",
+      "foreign_landing_url": "http://example.org/page",
+      "license_url": "javascript:alert(1)",
+      "license": "by",
+      "license_version": "4.0",
+      "provider": "example",
+      "source": "example",
+      "filetype": "jpeg",
+      "tags": [{ "name": "torture" }],
+      "mature": false,
+      "indexed_on": "2025-01-01T00:00:00.000000Z",
+      "height": 100,
+      "width": 100,
+      "detail_url": "https://api.openverse.org/v1/images/3f3f3f3f-3f3f-43f3-83f3-3f3f3f3f3f3f/",
+      "related_url": "https://api.openverse.org/v1/images/3f3f3f3f-3f3f-43f3-83f3-3f3f3f3f3f3f/related/"
+    }
+  ]
+}

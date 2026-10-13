@@ -1,0 +1,30 @@
+{
+  "result_count": 10,
+  "page_count": 1,
+  "page_size": 10,
+  "page": 1,
+  "results": [
+    {
+      "id": "22222222-3333-4444-8555-666666666666",
+      "title": "Harbour at dusk",
+      "url": "https://live.staticflickr.com/65535/51234567891_abcdef1234_b.jpg",
+      "creator": "Ada Lovelace",
+      "creator_url": "https://www.flickr.com/photos/example",
+      "license": "by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "provider": "flickr",
+      "source": "flickr",
+      "category": "photograph",
+      "filetype": "jpeg",
+      "tags": [{ "name": "dusk", "accuracy": 0.9 }],
+      "mature": false,
+      "indexed_on": "2025-11-01T10:00:00.000000Z",
+      "height": 768,
+      "width": 1024,
+      "thumbnail": "https://api.openverse.org/v1/images/22222222-3333-4444-8555-666666666666/thumb/",
+      "detail_url": "https://api.openverse.org/v1/images/22222222-3333-4444-8555-666666666666/",
+      "related_url": "https://api.openverse.org/v1/images/22222222-3333-4444-8555-666666666666/related/"
+    }
+  ]
+}

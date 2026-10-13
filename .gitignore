@@ -1,0 +1,20 @@
+# Build output (never commit: regenerated on every build)
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/captures/
+.cxx/
+app/build/
+build/
+app/.cxx/
+.kotlin/
+
+# Local SDK / tooling that lands outside the workspace
+/opt/
+
+# NOTE: dist/*.apk IS committed on purpose.
+# GitHub Actions builds the signed APK and commits it back to this branch so it can be retrieved
+# from a network-restricted environment (artifact downloads are not reachable from the sandbox).
+# See .github/workflows/build-apk.yml.

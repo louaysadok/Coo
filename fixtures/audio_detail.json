@@ -1,0 +1,42 @@
+{
+  "id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+  "title": "Night bus",
+  "foreign_landing_url": "https://freesound.org/people/example/sounds/12345/",
+  "url": "https://cdn.freesound.org/previews/12/12345_6789-lq.mp3",
+  "creator": "Field Recordist",
+  "creator_url": "https://freesound.org/people/example/",
+  "license": "cc0",
+  "license_version": "1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "provider": "freesound",
+  "source": "freesound",
+  "category": "sound_effect",
+  "filesize": 1200000,
+  "filetype": "mp3",
+  "tags": [{ "name": "field-recording", "accuracy": null }],
+  "attribution": "Field Recordist, CC0 1.0",
+  "mature": false,
+  "indexed_on": "2025-08-01T12:00:00.000000Z",
+  "genres": ["field recording", "ambient"],
+  "duration": 92000,
+  "bit_rate": 128000,
+  "sample_rate": 44100,
+  "thumbnail": "https://api.openverse.org/v1/audio/aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee/thumb/",
+  "detail_url": "https://api.openverse.org/v1/audio/aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee/",
+  "related_url": "https://api.openverse.org/v1/audio/aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee/related/",
+  "waveform": "https://api.openverse.org/v1/audio/aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee/waveform/",
+  "peaks": [0.1, 0.5, 0.9, 0.3],
+  "audio_set": {
+    "title": "City at night",
+    "foreign_landing_url": "https://freesound.org/people/example/packs/999/",
+    "creator": "Field Recordist",
+    "creator_url": "https://freesound.org/people/example/",
+    "url": "https://cdn.freesound.org/packs/999.zip",
+    "filesize": null,
+    "filetype": null
+  },
+  "alt_files": [
+    { "url": "https://cdn.freesound.org/previews/12/12345_6789-hq.ogg", "bit_rate": 256000, "sample_rate": 48000, "filetype": "ogg" }
+  ],
+  "unstable__sensitivity": []
+}

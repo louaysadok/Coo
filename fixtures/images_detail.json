@@ -1,0 +1,30 @@
+{
+  "id": "0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d",
+  "title": "Sunrise over the harbour",
+  "foreign_landing_url": "https://www.flickr.com/photos/example/51234567890",
+  "url": "https://live.staticflickr.com/65535/51234567890_abcdef1234_b.jpg",
+  "creator": "Ada Lovelace",
+  "creator_url": "https://www.flickr.com/photos/example",
+  "license": "by",
+  "license_version": "2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "provider": "flickr",
+  "source": "flickr",
+  "category": "photograph",
+  "filesize": 184320,
+  "filetype": "jpeg",
+  "tags": [
+    { "name": "sunrise", "accuracy": 0.94 },
+    { "name": "harbour", "accuracy": 0.81 }
+  ],
+  "attribution": "\"Sunrise over the harbour\" by Ada Lovelace is licensed under CC BY 2.0.",
+  "fields_matched": null,
+  "mature": false,
+  "indexed_on": "2025-11-02T09:14:22.123456Z",
+  "height": 1024,
+  "width": 768,
+  "thumbnail": "https://api.openverse.org/v1/images/0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d/thumb/",
+  "detail_url": "https://api.openverse.org/v1/images/0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d/",
+  "related_url": "https://api.openverse.org/v1/images/0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d/related/",
+  "unstable__sensitivity": []
+}

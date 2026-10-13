@@ -1,0 +1,12 @@
+[
+  { "source_name": "flickr", "display_name": "Flickr", "image_count": 562144321, "audio_count": null },
+  { "source_name": "wikimedia", "display_name": "Wikimedia Commons", "image_count": 98123456, "audio_count": 1200 },
+  { "source_name": "nappy", "display_name": "Nappy", "image_count": 1345, "audio_count": null },
+  { "source_name": "animaldiversity", "display_name": "ADW", "image_count": 12000, "audio_count": null },
+  { "source_name": "brooklynmuseum", "display_name": "Brooklyn Museum", "image_count": 30213, "audio_count": null },
+  { "source_name": "rawpixel", "display_name": "Rawpixel", "image_count": 87654, "audio_count": null },
+  { "source_name": "science_museum", "display_name": "Science Museum", "image_count": 99887, "audio_count": null },
+  { "source_name": "smithsonian", "display_name": "Smithsonian", "image_count": 4455667, "audio_count": null },
+  { "source_name": "stocksnap", "display_name": "StockSnap", "image_count": 32109, "audio_count": null },
+  { "source_name": "unsplash", "display_name": "Unsplash", "image_count": 445566, "audio_count": null }
+]
