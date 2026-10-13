@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Job #{{ job.id }} · Polite Scraper{% endblock %}
+{% block content %}
+{% if running %}<meta http-equiv="refresh" content="3">{% endif %}
+
+<section class="card">
+  <div class="row between wrap">
+    <div class="min-0">
+      <p class="muted small">Job #{{ job.id }}</p>
+      <h1 class="break">{{ job.start_url }}</h1>
+    </div>
+    <span class="badge badge-{{ job.status }} big">{{ job.status }}</span>
+  </div>
+
+  <div class="stats">
+    <div><strong>{{ job.pages_fetched }}</strong><span>pages fetched</span></div>
+    <div><strong>{{ job.max_pages }}</strong><span>page limit</span></div>
+    <div><strong>{{ job.max_depth }}</strong><span>max depth</span></div>
+    <div><strong>{{ job.delay }}s</strong><span>delay</span></div>
+    <div><strong>{{ 'Yes' if job.same_site else 'No' }}</strong><span>same domain</span></div>
+  </div>
+
+  {% if job.pages_fetched and job.max_pages %}
+  <div class="progress"><div style="width: {{ [(job.pages_fetched / job.max_pages * 100) | round | int, 100] | min }}%"></div></div>
+  {% endif %}
+
+  {% if job.error %}<div class="alert">{{ job.error }}</div>{% endif %}
+
+  <div class="actions wrap">
+    <form method="post" action="/favorites/toggle">
+      <input type="hidden" name="kind" value="job">
+      <input type="hidden" name="ref_id" value="{{ job.id }}">
+      <input type="hidden" name="back" value="/jobs/{{ job.id }}">
+      <button class="btn {{ 'on' if job_favorite }}" type="submit">{{ '★ Favourited' if job_favorite else '☆ Favourite job' }}</button>
+    </form>
+    {% if running %}
+    <form method="post" action="/jobs/{{ job.id }}/cancel">
+      <button class="btn danger" type="submit">Stop</button>
+    </form>
+    {% else %}
+    <form method="post" action="/jobs/{{ job.id }}/resume">
+      <button class="btn" type="submit">Resume / re-crawl</button>
+    </form>
+    {% endif %}
+    <a class="btn" href="/jobs/{{ job.id }}/export.csv">Export CSV</a>
+    <form method="post" action="/jobs/{{ job.id }}/delete" data-confirm="Delete this job and all its pages?">
+      <button class="btn danger ghost" type="submit">Delete</button>
+    </form>
+  </div>
+</section>
+
+<section class="card">
+  <div class="row between wrap">
+    <h2>Pages <span class="muted small">({{ total }})</span></h2>
+    <form method="get" class="search">
+      <input type="search" name="q" value="{{ q }}" placeholder="Search titles, text, URLs…">
+      <button class="btn" type="submit">Search</button>
+    </form>
+  </div>
+
+  {% if pages %}
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Title / URL</th><th>Depth</th><th>Status</th></tr></thead>
+      <tbody>
+      {% for p in pages %}
+        <tr>
+          <td>
+            <form method="post" action="/favorites/toggle">
+              <input type="hidden" name="kind" value="page">
+              <input type="hidden" name="ref_id" value="{{ p.id }}">
+              <input type="hidden" name="back" value="/jobs/{{ job.id }}">
+              <button class="star {{ 'on' if p.favorite }}" title="Favourite" type="submit">{{ '★' if p.favorite else '☆' }}</button>
+            </form>
+          </td>
+          <td class="min-0">
+            <a href="/pages/{{ p.id }}" class="page-title">{{ p.title or '(no title)' }}</a>
+            <div class="muted small break">{{ p.url }}</div>
+            {% if p.description %}<div class="small desc">{{ p.description }}</div>{% endif %}
+          </td>
+          <td>{{ p.depth }}</td>
+          <td>
+            {% if p.error %}<span class="badge badge-failed">{{ p.error }}</span>
+            {% else %}<span class="badge badge-completed">{{ p.status_code or 'ok' }}</span>{% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% set pages_total = ((total - 1) // page_size) + 1 if total else 1 %}
+  {% if pages_total > 1 %}
+  <div class="pager">
+    {% if page > 1 %}<a class="btn" href="?q={{ q|urlencode }}&page={{ page - 1 }}">← Prev</a>{% endif %}
+    <span class="muted">Page {{ page }} of {{ pages_total }}</span>
+    {% if page < pages_total %}<a class="btn" href="?q={{ q|urlencode }}&page={{ page + 1 }}">Next →</a>{% endif %}
+  </div>
+  {% endif %}
+  {% else %}
+  <p class="muted">{{ 'Crawling… results will appear here.' if running else 'No pages match.' }}</p>
+  {% endif %}
+</section>
+{% endblock %}

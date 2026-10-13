@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Favorites · Polite Scraper{% endblock %}
+{% block content %}
+<section class="hero compact">
+  <h1>Favorites</h1>
+  <form method="get" action="/favorites" class="row wrap" id="fav-form">
+    <label class="inline">Show
+      <select name="kind" id="fav-kind">
+        <option value="page" {{ 'selected' if kind == 'page' }}>Pages</option>
+        <option value="job" {{ 'selected' if kind == 'job' }}>Jobs (websites)</option>
+      </select>
+    </label>
+    <noscript><button class="btn" type="submit">Go</button></noscript>
+  </form>
+</section>
+
+<section class="card">
+  {% if items %}
+    {% if kind == 'page' %}
+    <div class="fav-grid">
+      {% for it in items %}
+      <article class="fav-card">
+        <a href="/pages/{{ it.id }}" class="page-title">{{ it.title or '(no title)' }}</a>
+        <div class="muted small break">{{ it.url }}</div>
+        {% if it.description %}<p class="small desc">{{ it.description }}</p>{% endif %}
+        <div class="row between small muted">
+          <span>Job #{{ it.job_id }}</span><span>{{ it.favorited_at|ftime }}</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="job-list">
+      {% for it in items %}
+      <a class="job-row" href="/jobs/{{ it.id }}">
+        <div class="job-main">
+          <div class="job-url">{{ it.start_url }}</div>
+          <div class="muted small">#{{ it.id }} · {{ it.pages_fetched }} pages · favourited {{ it.favorited_at|ftime }}</div>
+        </div>
+        <span class="badge badge-{{ it.status }}">{{ it.status }}</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% else %}
+    <p class="muted">No favourites yet. Star a page or job to see it here.</p>
+  {% endif %}
+</section>
+{% endblock %}

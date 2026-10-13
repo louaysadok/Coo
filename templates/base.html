@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Polite Scraper{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">◆ Polite Scraper</a>
+    <nav>
+      <a href="/" class="{{ 'active' if active == 'dashboard' }}">Dashboard</a>
+      <a href="/favorites" class="{{ 'active' if active == 'favorites' }}">Favorites</a>
+      <a href="/backup" title="Download a full backup">Backup</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">Respects robots.txt · Rate-limited per site · Public addresses only</footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
