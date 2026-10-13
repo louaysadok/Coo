@@ -61,7 +61,16 @@ jobs:
         run: flutter pub get
 
       - name: Run unit tests
-        run: flutter test
+        shell: bash
+        run: |
+          set -o pipefail
+          flutter test --reporter expanded 2>&1 | tee test-output.txt
+
+      - name: Surface test failures as annotations
+        if: failure()
+        run: |
+          grep -nE "Expected|Actual|Which|Error|error|Exception|FAILED|test/|\.dart:[0-9]" test-output.txt \
+            | head -80 | while IFS= read -r line; do echo "::error::${line}"; done
 
       - name: Build release APK
         run: flutter build apk --release
