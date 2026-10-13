@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title or page.url }} · Polite Scraper{% endblock %}
+{% block content %}
+<section class="card">
+  <p class="muted small"><a href="/jobs/{{ page.job_id }}">← Back to job #{{ page.job_id }}</a></p>
+  <div class="row between wrap">
+    <h1 class="break">{{ page.title or '(no title)' }}</h1>
+    <form method="post" action="/favorites/toggle">
+      <input type="hidden" name="kind" value="page">
+      <input type="hidden" name="ref_id" value="{{ page.id }}">
+      <input type="hidden" name="back" value="/pages/{{ page.id }}">
+      <button class="btn {{ 'on' if favorite }}" type="submit">{{ '★ Favourited' if favorite else '☆ Favourite' }}</button>
+    </form>
+  </div>
+  <p><a href="{{ page.url }}" target="_blank" rel="noopener noreferrer" class="break">{{ page.url }}</a></p>
+  {% if page.description %}<p class="desc">{{ page.description }}</p>{% endif %}
+  <div class="stats">
+    <div><strong>{{ page.status_code or '—' }}</strong><span>status</span></div>
+    <div><strong>{{ page.depth }}</strong><span>depth</span></div>
+    <div><strong>{{ page.content_type or '—' }}</strong><span>type</span></div>
+    <div><strong>{{ page.fetched_at|ftime }}</strong><span>fetched</span></div>
+  </div>
+  {% if page.error %}<div class="alert">{{ page.error }}</div>{% endif %}
+</section>
+<section class="card">
+  <h2>Extracted text</h2>
+  <div class="text-block">{{ page.text or 'No text extracted.' }}</div>
+</section>
+{% endblock %}

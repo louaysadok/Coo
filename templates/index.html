@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Scrape any website, politely.</h1>
+  <p class="muted">Give it a public address. It reads robots.txt, waits between requests,
+    follows links within limits, and stores the titles, descriptions and text for you to search.</p>
+</section>
+
+<section class="card">
+  <h2>New scrape</h2>
+  {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+  <form method="post" action="/jobs" class="grid-form">
+    <label class="span-2">Website address
+      <input type="url" name="url" required placeholder="https://example.com"
+             value="{{ form.url or '' }}" autofocus>
+    </label>
+    <label>Max pages
+      <input type="number" name="max_pages" min="1" max="5000" value="{{ form.max_pages or 50 }}">
+    </label>
+    <label>Max link depth
+      <input type="number" name="max_depth" min="0" max="10" value="{{ form.max_depth if form.max_depth is defined else 2 }}">
+    </label>
+    <label>Delay between requests (s)
+      <input type="number" name="delay" min="0.25" max="60" step="0.25" value="{{ form.delay or 1.0 }}">
+    </label>
+    <label class="check">
+      <input type="checkbox" name="same_site" {{ 'checked' if form.same_site is not defined or form.same_site }}>
+      Stay on the same domain
+    </label>
+    <div class="span-2 actions">
+      <button type="submit" class="btn primary">Start scraping</button>
+    </div>
+  </form>
+</section>
+
+<section class="card">
+  <div class="row between">
+    <h2>Jobs</h2>
+    <span class="muted">{{ jobs|length }} total</span>
+  </div>
+  {% if jobs %}
+  <div class="job-list">
+    {% for job in jobs %}
+    <a class="job-row" href="/jobs/{{ job.id }}">
+      <div class="job-main">
+        <div class="job-url">{{ job.start_url }}</div>
+        <div class="muted small">#{{ job.id }} · {{ job.created_at|ftime }} · {{ job.pages_fetched }} pages</div>
+      </div>
+      <span class="badge badge-{{ job.status }}">{{ job.status }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">No jobs yet. Start one above.</p>
+  {% endif %}
+</section>
+{% endblock %}
